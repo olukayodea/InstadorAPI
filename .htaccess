@@ -1,0 +1,37 @@
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule 1.0/customer/uploadRaw/(.*)$ webservice/fileUpload.php?customer&raw&request=$1 [QSA,NC,L]
+RewriteRule 1.0/customer/upload/(.*)$ webservice/fileUpload.php?customer&request=$1 [QSA,NC,L]
+RewriteRule 1.0/customer/(.*)$ webservice/homePage.php?customer&request=$1 [QSA,NC,L]
+RewriteRule 1.0/courier/uploadRaw/(.*)$ webservice/fileUpload.php?courier&raw&request=$1 [QSA,NC,L]
+RewriteRule 1.0/courier/upload/(.*)$ webservice/fileUpload.php?courier&request=$1 [QSA,NC,L]
+RewriteRule 1.0/courier/(.*)$ webservice/homePage.php?courier&request=$1 [QSA,NC,L]
+RewriteRule 1.0/site/uploadRaw/(.*)$ webservice/fileUpload.php?site&raw&request=$1 [QSA,NC,L]
+RewriteRule 1.0/site/upload/(.*)$ webservice/fileUpload.php?site&request=$1 [QSA,NC,L]
+RewriteRule download/payment/paymentAdvice webservice/INSTA_PAYMENT_ADVISE.csv [QSA,NC,L]
+RewriteRule download/payment/singlePaymentAdvice/(.*)$ webservice/$1 [QSA,NC,L]
+RewriteRule 1.0/site/(.*)$ webservice/homePage.php?site&request=$1 [QSA,NC,L]
+RewriteRule 1.0/partner/uploadRaw/(.*)$ webservice/fileUpload.php?partner&raw&request=$1 [QSA,NC,L]
+RewriteRule 1.0/partner/upload/(.*)$ webservice/fileUpload.php?partner&request=$1 [QSA,NC,L]
+RewriteRule 1.0/partner/(.*)$ webservice/homePage.php?partner&request=$1 [QSA,NC,L]
+
+RewriteRule common/files/logo includes/views/emails/logo1.png$1 [QSA,NC,L]
+
+RewriteRule common/customer/files/(.*)$ userFiles/customer/$1 [QSA,NC,L]
+RewriteRule common/courier/files/(.*)$ userFiles/courier/$1 [QSA,NC,L]
+RewriteRule common/site/files/(.*)$ userFiles/site/$1 [QSA,NC,L]
+RewriteRule common/partner/files/(.*)$ userFiles/partner/$1 [QSA,NC,L]
+
+RewriteRule setup/(.*)$ init.php?request=$1 [QSA,NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
+
+IndexIgnore *
+</IfModule>
