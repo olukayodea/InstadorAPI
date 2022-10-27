@@ -311,7 +311,7 @@ class tickets extends common {
                 $this->return['message'] = "No record found";
             }
         } else {
-            $current = (intval($page) > 0) ? (intval($page)-1) : 0;
+            $textfieldMinValueMsg = (intval($page) > 0) ? (intval($page)-1) : 0;
             $limit = intval($options->get("resultPerPage"));
             $start = $current*$limit;
             $this->result = $this->getAll("user_id", $view, $start, $limit);
